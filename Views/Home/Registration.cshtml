@@ -1,0 +1,63 @@
+@model Registration
+@{
+    ViewData["Title"] = "Registration";
+}
+
+@using (Html.BeginForm("Registration", "Login", FormMethod.Post, new {id="formRegistration"}))  
+{  
+<div class="form-group">  
+   <label for="First Name" class="col-md-3 control-label">First Name</label>  
+    <div class="col-md-9">  
+      @Html.TextBoxFor(x => x.FirstName, "", new { @class = "form-control", placeholder = "First Name" })  
+    @* @Html.ValidationMessageFor(x => x.FirstName, "Please enter First Name", new { @class = "text-danger", style = "display:none" })   *@
+     @Html.ValidationMessageFor(x => x.FirstName)
+   </div>  
+</div>  
+<br />  
+<div class="form-group">  
+   <label for="firstname" class="col-md-3 control-label">Last Name</label>  
+<div class="col-md-9">  
+   @Html.TextBoxFor(x => x.LastName, "", new { @class = "form-control", placeholder = "Last Name" })  
+   @* @Html.ValidationMessageFor(x => x.LastName, "Please enter Last Name", new { @class = "text-danger", style= "display:none" })   *@
+    @Html.ValidationMessageFor(x => x.LastName)
+</div>  
+</div>  
+<br />  
+<div class="form-group">  
+   <label for="lastname" class="col-md-3 control-label">Email</label>  
+<div class="col-md-9">  
+   @Html.TextBoxFor(x => x.Email, "", new { @class = "form-control", placeholder = "Email" })  
+   @* @Html.ValidationMessageFor(x => x.Email, "Please enter Email", new { @class = "text-danger", style = "display:none" })   *@
+   @Html.ValidationMessageFor(x => x.Email)
+   </div>  
+</div>  
+<br />  
+<div class="form-group">  
+   <label for="password" class="col-md-3 control-label">Password</label>  
+<div class="col-md-9">  
+   @Html.PasswordFor(x => x.Password, new { @class = "form-control", placeholder = "Password" })  
+   @* @Html.ValidationMessageFor(x => x.Password, "Please enter Password", new { @class = "text-danger", style ="display:none" })   *@
+    @Html.ValidationMessageFor(x => x.Password)
+</div>  
+</div>  
+<br />  
+<div class="form-group">  
+   <label for="password" class="col-md-3 control-label">Contact</label>  
+<div class="col-md-9">  
+   @Html.PasswordFor(x => x.Contact, new { @class = "form-control", placeholder = "Password" })  
+   @* @Html.ValidationMessageFor(x => x.Contact, "Please enter Contact", new { @class = "text-danger", style = "display:none" })   *@
+ @Html.ValidationMessageFor(x => x.Contact)
+</div>  
+</div>  
+<div class="form-group">  
+   <span id="spnMessage" class="text-danger">@TempData["Message"]</span>  
+   <br />  
+<!-- Button -->  
+<div class="col-md-offset-3 col-md-9">  
+   <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> Sign Up</button>  
+   <span style="margin-left:8px;"></span>  
+</div>  
+</div>  
+}  
+
+   
