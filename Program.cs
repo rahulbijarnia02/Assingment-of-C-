@@ -29,8 +29,9 @@ app.UseRequestLocalization(options => {
 });
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Language}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Registration}/{id?}");
 app.Run();
 
 
 // This assignment is made by Rahul
+

@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using myapp.Entities;
 using myapp.Models;
+using MYAPP.Models;
 
 namespace myapp.Controllers;
 
@@ -15,8 +17,44 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+    //      var model = new List<UserModel>();
+    // model.Add(new UserModel { Name = "Dhruv",age = 21,Salary = 122,Designation = ".Net"});
+    // model.Add(new UserModel{ Name = "Rahul",age = 21,Salary = 3613,Designation = ".Net"});
+    // model.Add(new UserModel{ Name = "janak", age = 22,Salary = 232,Designation = "React"});
+    // return View(model);
+    using (var context=new EmployeeDBContext())
+        {
+            var employeeList=context.EmployeeLists.ToList();
+             return View(employeeList);
+        }
+    }
+     public IActionResult Employee()
+    {
+        using (var context=new EmployeeDBContext())
+        {
+            var employeeList=context.EmployeeLists.ToList();
+            // var emplist=context.Forms.Where(x=>x.EmpId==3).FirstOrDefault();
+        }
         return View();
     }
+     public IActionResult AddEmployee(UserModel employeeModel)
+    {
+        using (var context=new EmployeeDBContext())
+        {
+            UserModel employee=new UserModel();
+            // employee.FirstName=employeeModel.FirstName;
+            // employee.Name=employeeModel.Name;
+            // employee.Email=employeeModel.Email;
+            // employee.Password=employeeModel.Password;
+            // employee.ConfirmPassword=employee.ConfirmPassword;
+            // employee.Contact=employeeModel.Contact;
+            // context.Forms.Add(employee);
+            // context.SaveChanges();
+        }
+        return RedirectToAction(actionName: "Index", controllerName: "Home");
+        // return View();
+    }
+    
     public IActionResult Registration()
     {
         return View();
@@ -54,6 +92,12 @@ public class CachedController : Controller
     {
         return View();
     }
+    [HttpPost]
+     public IActionResult ALogin()
+    {
+        return RedirectToAction("Index", "Home");
+    }
+  
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

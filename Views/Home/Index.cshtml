@@ -1,8 +1,44 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@model IEnumerable<myapp.Entities.EmployeeList>
+@{
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div>
+   display user details
 </div>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Employee_Name
+                </th>
+                 <th>
+                Age
+                </th>
+                 <th>
+                Salary
+                </th>
+                 <th>
+                Designation
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+ @foreach(var prod in Model)
+    {
+          <tr>
+            <td>
+                @prod.Name;
+                </td>
+                <td>
+                    @prod.Age;
+                    </td>
+                      <td>
+                    @prod.Salary;
+                    </td>
+                      <td>
+                    @prod.Designation;
+                    </td>
+            </tr>
+    }
+    </tbody>
+        </table>
