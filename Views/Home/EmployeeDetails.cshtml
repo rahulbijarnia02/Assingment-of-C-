@@ -1,0 +1,72 @@
+@model EmployeeDetailsModel
+@{
+    ViewData["Title"] = "Login";
+}
+<div class="text">
+ 
+    @using(Html.BeginForm("AddEmployee","Home",FormMethod.Post,new {id="formRegistration"}))
+    {
+<div class="form-group">
+   <label for="First Name" class="col-md-3 control-label">First Name</label>
+    <div class="col-md-9">
+      @Html.TextBoxFor(x => x.Name, "", new { @class = "form-control", placeholder = "First Name" })
+    @* @Html.ValidationMessageFor(x => x.FirstName, "Please enter First Name", new { @class = "text-success", style = "display:none" }) *@
+   @Html.ValidationMessageFor(x => x.Name)
+   </div>
+  </div>
+//<br />
+//<div class="form-group">
+ //  <label for="Last Name" class="col-md-3 control-label">Last Name</label>
+//<div class="col-md-9">
+ //  @Html.TextBoxFor(x => x.LastName, "", new { @class = "form-control", placeholder = "Last Name" })
+ //  @* @Html.ValidationMessageFor(x => x.LastName, "Please enter Last Name", new { @class = "text-danger", style= "display:none" }) *@
+//@Html.ValidationMessageFor(x => x.LastName)
+//</div>
+//</div>
+//<br />
+<div class="form-group">
+   <label for="Email" class="col-md-3 control-label">Age</label>
+<div class="col-md-9">
+   @Html.TextBoxFor(x => x.Age, "", new { @class = "form-control", placeholder = "Age" })
+   @* @Html.ValidationMessageFor(x => x.Email, "Please enter the Email", new { @class = "text-danger", style = "display:none" }) *@
+   @Html.ValidationMessageFor(x => x.Age)
+   </div>
+</div>
+<br />
+ <div class="form-group">
+   <label for="text" class="col-md-3 control-label">Salary</label>
+<div class="col-md-9">
+
+   @Html.TextBoxFor(x => x.salary, new { @class = "form-control", placeholder = "Salary" })
+   @* @Html.ValidationMessageFor(x => x.Password, "Please enter Password", new { @class = "text-danger", style ="display:none" }) *@
+   @Html.ValidationMessageFor(x => x.salary)
+</div>
+</div>
+<br />
+<div class="form-group">
+   <label for="First Name" class="col-md-3 control-label">Designation</label>
+    <div class="col-md-9">
+      @Html.TextBoxFor(x => x.Designation, "", new { @class = "form-control", placeholder = "Designation" })
+    @* @Html.ValidationMessageFor(x => x.FirstName, "Please enter First Name", new { @class = "text-success", style = "display:none" }) *@
+   @Html.ValidationMessageFor(x => x.Designation)
+   </div>
+  </div>
+@* <br />
+<div class="form-group">
+   <label for="Contact" class="col-md-3 control-label">Contact</label>
+<div class="col-md-9">
+   @Html.PasswordFor(x => x.Contact, new { @class = "form-control", placeholder = "contact" })
+   @* @Html.ValidationMessageFor(x => x.Contact, "Please enter Contact", new { @class = "text-danger", style = "display:none" }) *@
+  // @Html.ValidationMessageFor(x => x.Contact)
+//</div>
+//</div> *@
+<div class="form-group">
+   <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
+   <br />
+<!-- Button -->
+<div class="col-md-offset-3 col-md-9">
+   <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> Submit</button>
+   <span style="margin-left:8px;"></span>
+</div>
+</div>
+    }

@@ -6,6 +6,8 @@ namespace myapp.Entities;
 
 public partial class EmployeeDBContext : DbContext
 {
+    internal readonly object EmployeeDetails;
+
     public EmployeeDBContext()
     {
     }

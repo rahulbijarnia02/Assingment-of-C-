@@ -4,7 +4,7 @@ using myapp.Entities;
 using myapp.Models;
 using MYAPP.Models;
 
-namespace myapp.Controllers;
+namespace MYAPP.Controllers;
 
 public class HomeController : Controller
 {
@@ -27,6 +27,7 @@ public class HomeController : Controller
             var employeeList=context.EmployeeLists.ToList();
              return View(employeeList);
         }
+         
     }
      public IActionResult Employee()
     {
@@ -37,24 +38,26 @@ public class HomeController : Controller
         }
         return View();
     }
-     public IActionResult AddEmployee(UserModel employeeModel)
+   
+      [HttpPost]
+        public IActionResult AddEmployee(EmployeeDetailsModel EmployeeDetails)
     {
         using (var context=new EmployeeDBContext())
         {
-            UserModel employee=new UserModel();
-            // employee.FirstName=employeeModel.FirstName;
-            // employee.Name=employeeModel.Name;
-            // employee.Email=employeeModel.Email;
-            // employee.Password=employeeModel.Password;
+            EmployeeList employee=new EmployeeList();
+            employee.Name=EmployeeDetails.Name;
+            employee.Age=EmployeeDetails.Age;
+            employee.Salary=EmployeeDetails.salary;
+            employee.Designation=EmployeeDetails.Designation;
             // employee.ConfirmPassword=employee.ConfirmPassword;
             // employee.Contact=employeeModel.Contact;
-            // context.Forms.Add(employee);
-            // context.SaveChanges();
+            context.EmployeeLists.Add(employee);
+            context.SaveChanges();
+         
         }
         return RedirectToAction(actionName: "Index", controllerName: "Home");
         // return View();
     }
-    
     public IActionResult Registration()
     {
         return View();
@@ -93,11 +96,22 @@ public class CachedController : Controller
         return View();
     }
     [HttpPost]
-     public IActionResult ALogin()
-    {
-        return RedirectToAction("Index", "Home");
-    }
-  
+    //  public IActionResult ALogin()
+    // {
+    //     return RedirectToAction("Index", "Home");
+    // }
+     [HttpPost]
+public IActionResult Afterlogin()
+{
+    //handle your search stuff here...
+    return RedirectToAction("Index", "Home");
+}
+
+ public IActionResult EmployeeDetails()
+{
+    //handle your search stuff here...
+    return View();
+}  
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
